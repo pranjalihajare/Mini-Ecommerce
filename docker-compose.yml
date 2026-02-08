@@ -1,0 +1,20 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: mini_ecommerce_backend
+    ports:
+      - "5000:5000"
+    environment:
+      NODE_ENV: production
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: mini_ecommerce_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
